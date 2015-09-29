@@ -4,10 +4,11 @@ class Node
   def initialize pos, route=[]
     if valid_pos? pos   # verify current possition is valid
       @current_pos = pos
-      @route = route
+      @route = route.push pos
     else
       return
     end
+
     @possible_moves = []
 
     x = pos[0]
@@ -41,6 +42,5 @@ class Node
     else
       return true
     end
-
   end
 end
