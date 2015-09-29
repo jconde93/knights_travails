@@ -1,12 +1,11 @@
 class Node
   attr_reader :current_pos, :possible_moves
 
-  def initialize pos
-    if valid_pos? pos
+  def initialize pos, route=[]
+    if valid_pos? pos   # verify current possition is valid
       @current_pos = pos
-      @visited = false
+      @route = route
     else
-      puts "Not valid coordinates"
       return
     end
     @possible_moves = []
@@ -26,34 +25,22 @@ class Node
     }
 
     possible_pos.each_value do |arr|
-      if valid_pos? arr
+      #verify if possible possition is valid
+      if valid_pos? arr, route
         @possible_moves.push arr
       end
     end
-
   end
-
-  def visit!
-    @visited = true
-  end
-
-  def visited?
-    @visited
-  end
-
 
   private
 
-  def valid_pos? arr
-    if arr[0] < 0 or arr[0] > 7 or arr[1] < 0 or arr[1] > 7
+  def valid_pos? arr, route=[]
+    if (arr[0] < 0 or arr[0] > 7 or arr[1] < 0 or arr[1] > 7)\
+      or route.include? arr
       return false
     else
       return true
     end
+
   end
 end
-
-
-
-node = Node.new [-1,-7]
-p node
