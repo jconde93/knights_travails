@@ -20,6 +20,8 @@ class Node
         @moves.push move
       end
     end
+
+
   end
 
   private
