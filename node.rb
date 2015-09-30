@@ -25,6 +25,9 @@ class Node
   end
 
   private
+
+  # Checks that the coordinates are valid and removes any valid moves that
+  # are already inside the route of this node
   def valid? arr, route=[]
     if arr[0] < 0 or arr[0] > 7 \
       or arr[1] < 0 or arr[1] > 7 \

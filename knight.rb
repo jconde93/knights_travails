@@ -1,5 +1,7 @@
 require_relative './node'
 
+# uses a breath_first_search to find the shortest path of a knight from 
+# one place on the chess board to another.
 def knight_move starting_pos, target_pos
   starting_node = Node.new starting_pos
   queue = [starting_node]
@@ -24,7 +26,3 @@ def knight_move starting_pos, target_pos
     queue.shift
   end
 end
-
-
-
-knight_move [0,0],[7,7]
